@@ -270,7 +270,6 @@ impl SliderState {
     pub fn set_value(
         &mut self,
         value: impl Into<SliderValue>,
-        _: &mut Window,
         cx: &mut Context<Self>,
     ) {
         self.value = value.into();
