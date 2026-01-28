@@ -627,7 +627,7 @@ impl RenderOnce for Slider {
                                     .when(axis.is_vertical(), |this| {
                                         this.w_full().bottom(bar_start).top(bar_end)
                                     })
-                                    .bg(bar_color)
+                                    .bg(thumb_color)
                                     .rounded_full(),
                             )
                             .when(is_range, |this| {
