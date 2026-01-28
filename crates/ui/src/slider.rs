@@ -545,7 +545,6 @@ impl RenderOnce for Slider {
             .when(axis.is_vertical(), |this| this.h(px(120.)))
             .when(axis.is_horizontal(), |this| this.w_full())
             .refine_style(&self.style)
-            .bg(bar_color)
             .text_color(thumb_color)
             .child(
                 h_flex()
@@ -615,7 +614,7 @@ impl RenderOnce for Slider {
                             .relative()
                             .when(axis.is_horizontal(), |this| this.w_full().h_1p5())
                             .when(axis.is_vertical(), |this| this.h_full().w_1p5())
-                            .bg(bar_color.opacity(0.2))
+                            .bg(bar_color)
                             .active(|this| this.bg(bar_color.opacity(0.4)))
                             .corner_radii(radius)
                             .child(
