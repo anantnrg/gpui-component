@@ -447,8 +447,9 @@ impl Slider {
             .corner_radii(radius)
             .bg(bar_color.opacity(0.5))
             .when(cx.theme().shadow, |this| this.shadow_md())
-            .size_4()
-            .p(px(1.))
+            .h_3()
+            .w_1()
+            .p(px(1.5))
             .child(
                 div()
                     .flex_shrink_0()
@@ -516,7 +517,7 @@ impl RenderOnce for Slider {
             .color
             .unwrap_or_else(|| cx.theme().slider_thumb);
         let corner_radii = self.style.corner_radii.clone();
-        let default_radius = px(999.);
+        let default_radius = px(2.0);
         let radius = Corners {
             top_left: corner_radii
                 .top_left
@@ -613,8 +614,8 @@ impl RenderOnce for Slider {
                         div()
                             .id("slider-bar")
                             .relative()
-                            .when(axis.is_horizontal(), |this| this.w_full().h_1p5())
-                            .when(axis.is_vertical(), |this| this.h_full().w_1p5())
+                            .when(axis.is_horizontal(), |this| this.w_full().h_2())
+                            .when(axis.is_vertical(), |this| this.h_full().w_2())
                             .bg(bar_color)
                             .active(|this| this.bg(bar_color))
                             .corner_radii(radius)
