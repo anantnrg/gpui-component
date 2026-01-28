@@ -270,6 +270,7 @@ impl SliderState {
     pub fn set_value(
         &mut self,
         value: impl Into<SliderValue>,
+        _: &mut Window,
         cx: &mut Context<Self>,
     ) {
         self.value = value.into();
@@ -545,7 +546,8 @@ impl RenderOnce for Slider {
             .when(axis.is_vertical(), |this| this.h(px(120.)))
             .when(axis.is_horizontal(), |this| this.w_full())
             .refine_style(&self.style)
-            .text_color(thumb_color)
+            .bg(cx.theme().transparent)
+            .text_color(cx.theme().foreground)
             .child(
                 h_flex()
                     .id("slider-bar-container")
@@ -615,7 +617,7 @@ impl RenderOnce for Slider {
                             .when(axis.is_horizontal(), |this| this.w_full().h_1p5())
                             .when(axis.is_vertical(), |this| this.h_full().w_1p5())
                             .bg(bar_color)
-                            .active(|this| this.bg(bar_color.opacity(0.4)))
+                            .active(|this| this.bg(bar_color))
                             .corner_radii(radius)
                             .child(
                                 div()
