@@ -393,11 +393,10 @@ impl Scrollbar {
     }
 
     fn style_for_active(cx: &App) -> (Hsla, Hsla, Hsla, Pixels, Pixels, Pixels) {
-        let theme = cx.global::<Theme>();
         (
-            Hsla::from(theme.accent),
-            Hsla::from(theme.white_05),
-            gpui::transparent_black(),
+            cx.theme().scrollbar_thumb_hover,
+            cx.theme().scrollbar,
+            cx.theme().border,
             THUMB_ACTIVE_WIDTH,
             THUMB_ACTIVE_INSET,
             THUMB_ACTIVE_RADIUS,
@@ -405,11 +404,10 @@ impl Scrollbar {
     }
 
     fn style_for_hovered_thumb(cx: &App) -> (Hsla, Hsla, Hsla, Pixels, Pixels, Pixels) {
-        let theme = cx.global::<Theme>();
         (
-            Hsla::from(theme.accent_15),
-            Hsla::from(theme.white_05),
-            gpui::transparent_black(),
+            cx.theme().scrollbar_thumb_hover,
+            cx.theme().scrollbar,
+            cx.theme().border,
             THUMB_ACTIVE_WIDTH,
             THUMB_ACTIVE_INSET,
             THUMB_ACTIVE_RADIUS,
@@ -417,10 +415,9 @@ impl Scrollbar {
     }
 
     fn style_for_hovered_bar(cx: &App) -> (Hsla, Hsla, Hsla, Pixels, Pixels, Pixels) {
-        let theme = cx.global::<Theme>();
         (
-            Hsla::from(theme.accent_15),
-            Hsla::from(theme.white_05),
+            cx.theme().scrollbar_thumb,
+            cx.theme().scrollbar,
             gpui::transparent_black(),
             THUMB_ACTIVE_WIDTH,
             THUMB_ACTIVE_INSET,
@@ -435,14 +432,13 @@ impl Scrollbar {
             _ => (THUMB_ACTIVE_WIDTH, THUMB_ACTIVE_INSET, THUMB_ACTIVE_RADIUS),
         };
 
-        let theme = cx.global::<Theme>();
         (
-            Hsla::from(theme.accent_15),
-            Hsla::from(theme.white_05),
+            cx.theme().scrollbar_thumb,
+            cx.theme().scrollbar,
             gpui::transparent_black(),
-            THUMB_ACTIVE_WIDTH,
-            THUMB_ACTIVE_INSET,
-            THUMB_ACTIVE_RADIUS,
+            width,
+            inset,
+            radius,
         )
     }
 
