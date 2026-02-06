@@ -18,16 +18,16 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The width of the scrollbar (THUMB_ACTIVE_INSET * 2 + THUMB_ACTIVE_WIDTH)
-const WIDTH: Pixels = px(4. * 2. + 8.);
-const MIN_THUMB_SIZE: f32 = 48.;
+const WIDTH: Pixels = px(24.0);
+const MIN_THUMB_SIZE: f32 = 48.0;
 
-const THUMB_WIDTH: Pixels = px(6.);
-const THUMB_RADIUS: Pixels = px(6. / 2.);
-const THUMB_INSET: Pixels = px(4.);
+const THUMB_WIDTH: Pixels = px(2.0);
+const THUMB_RADIUS: Pixels = px(2.0);
+const THUMB_INSET: Pixels = px(1.);
 
-const THUMB_ACTIVE_WIDTH: Pixels = px(8.);
-const THUMB_ACTIVE_RADIUS: Pixels = px(8. / 2.);
-const THUMB_ACTIVE_INSET: Pixels = px(4.);
+const THUMB_ACTIVE_WIDTH: Pixels = px(6.);
+const THUMB_ACTIVE_RADIUS: Pixels = px(6. / 2.);
+const THUMB_ACTIVE_INSET: Pixels = px(3.);
 
 const FADE_OUT_DURATION: f32 = 3.0;
 const FADE_OUT_DELAY: f32 = 2.0;
@@ -393,10 +393,11 @@ impl Scrollbar {
     }
 
     fn style_for_active(cx: &App) -> (Hsla, Hsla, Hsla, Pixels, Pixels, Pixels) {
+        let theme = cx.global::<Theme>();
         (
-            cx.theme().scrollbar_thumb_hover,
-            cx.theme().scrollbar,
-            cx.theme().border,
+            Hsla::from(theme.accent),
+            Hsla::from(theme.white_05),
+            gpui::transparent_black(),
             THUMB_ACTIVE_WIDTH,
             THUMB_ACTIVE_INSET,
             THUMB_ACTIVE_RADIUS,
@@ -404,10 +405,11 @@ impl Scrollbar {
     }
 
     fn style_for_hovered_thumb(cx: &App) -> (Hsla, Hsla, Hsla, Pixels, Pixels, Pixels) {
+        let theme = cx.global::<Theme>();
         (
-            cx.theme().scrollbar_thumb_hover,
-            cx.theme().scrollbar,
-            cx.theme().border,
+            Hsla::from(theme.accent_15),
+            Hsla::from(theme.white_05),
+            gpui::transparent_black(),
             THUMB_ACTIVE_WIDTH,
             THUMB_ACTIVE_INSET,
             THUMB_ACTIVE_RADIUS,
@@ -415,9 +417,10 @@ impl Scrollbar {
     }
 
     fn style_for_hovered_bar(cx: &App) -> (Hsla, Hsla, Hsla, Pixels, Pixels, Pixels) {
+        let theme = cx.global::<Theme>();
         (
-            cx.theme().scrollbar_thumb,
-            cx.theme().scrollbar,
+            Hsla::from(theme.accent_15),
+            Hsla::from(theme.white_05),
             gpui::transparent_black(),
             THUMB_ACTIVE_WIDTH,
             THUMB_ACTIVE_INSET,
@@ -432,13 +435,14 @@ impl Scrollbar {
             _ => (THUMB_ACTIVE_WIDTH, THUMB_ACTIVE_INSET, THUMB_ACTIVE_RADIUS),
         };
 
+        let theme = cx.global::<Theme>();
         (
-            cx.theme().scrollbar_thumb,
-            cx.theme().scrollbar,
+            Hsla::from(theme.accent_15),
+            Hsla::from(theme.white_05),
             gpui::transparent_black(),
-            width,
-            inset,
-            radius,
+            THUMB_ACTIVE_WIDTH,
+            THUMB_ACTIVE_INSET,
+            THUMB_ACTIVE_RADIUS,
         )
     }
 
