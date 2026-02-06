@@ -246,16 +246,16 @@ impl ColorPickerState {
         };
 
         self.slider_hsl[0].update(cx, |slider, cx| {
-            slider.set_value(h, window, cx);
+            slider.set_value(h, cx);
         });
         self.slider_hsl[1].update(cx, |slider, cx| {
-            slider.set_value(s, window, cx);
+            slider.set_value(s, cx);
         });
         self.slider_hsl[2].update(cx, |slider, cx| {
-            slider.set_value(l, window, cx);
+            slider.set_value(l, cx);
         });
         self.slider_hsl[3].update(cx, |slider, cx| {
-            slider.set_value(a, window, cx);
+            slider.set_value(a, cx);
         });
     }
 }
