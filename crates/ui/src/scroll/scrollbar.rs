@@ -121,7 +121,7 @@ impl ScrollbarHandle for ListState {
 
 #[doc(hidden)]
 #[derive(Debug, Clone)]
-struct ScrollbarState(Rc<Cell<ScrollbarStateInner>>);
+pub struct ScrollbarState(Rc<Cell<ScrollbarStateInner>>);
 
 #[doc(hidden)]
 #[derive(Debug, Clone, Copy)]
