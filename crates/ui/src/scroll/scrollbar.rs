@@ -125,7 +125,7 @@ pub struct ScrollbarState(Rc<Cell<ScrollbarStateInner>>);
 
 #[doc(hidden)]
 #[derive(Debug, Clone, Copy)]
-struct ScrollbarStateInner {
+pub struct ScrollbarStateInner {
     hovered_axis: Option<Axis>,
     hovered_on_thumb: Option<Axis>,
     dragged_axis: Option<Axis>,
